@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+
+    }
+    html,body{
+      padding: 0;
+      margin: 0;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <button id="button">发起get请求</button>
+  <script>
+    const button = document.querySelector('#button')
+    button.onclick = function(){
+      // readyState
+      // const xhr = new XMLHttpRequest()
+      // console.log('UNSENT', xhr.readyState)
+      // xhr.open('get', 'http://127.0.0.1:80/api/user?name=zs&age=19')
+      // console.log('OPENED', xhr.readyState)
+      // xhr.onprogress = (e) =>{
+      //   console.log('加载事件对象',e)
+      //   console.log('LOADING', xhr.readyState)
+      // }
+
+      // xhr.onload = function(e){
+      //   console.log('加载完成事件对象', e);
+      //   console.log('DONE', xhr.readyState)
+      // }
+      // xhr.send()
+
+      // response
+      // const xhr = new XMLHttpRequest()
+      
+      // xhr.open('get', 'http://127.0.0.1/api/user')
+      
+      // // 设置响应内容类型
+      // xhr.responseType = 'json'
+      // xhr.onreadystatechange = () => {
+      //   console.log('监听状态变化 ');
+      //   if(xhr.readyState === 4){
+      //     console.log('响应内容', xhr.response) // 值取决于设置的responseType
+      //     // console.log('响应内容文本', xhr.responseText) // 只在responseType 为 '' 或text时存在
+      //     console.log('响应', xhr)
+      //   }
+      // }
+
+      // xhr.onload = function(){
+      //   console.log(xhr.responseURL)
+      // }
+      // xhr.send()
+
+
+      const xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://127.0.0.1/api/user')
+      console.log('readyState', xhr.readyState);
+      console.log('xhr.status', xhr.status);
+      
+      xhr.onprogress = function(){
+        console.log('xhr.readyState',xhr.readyState)
+        console.log('xhr.status', xhr.status)
+        console.log(xhr);
+      }
+
+      xhr.onload = function(){
+        console.log(xhr.readyState);
+        console.log(xhr.status)
+        console.log(xhr);
+        console.log('获取响应头', xhr.getAllResponseHeaders());
+      }
+      xhr.send()
+    }
+  </script>
+</body>
+</html>
