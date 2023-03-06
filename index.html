@@ -63,10 +63,13 @@
 
 
       const xhr = new XMLHttpRequest()
-      xhr.open('get', 'http://127.0.0.1/api/user')
+      xhr.open('post', 'http://127.0.0.1/api/userinfo')
       console.log('readyState', xhr.readyState);
       console.log('xhr.status', xhr.status);
       
+      // 设置请求头
+      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.setRequestHeader("Content-type", "application/json");
       xhr.onprogress = function(){
         console.log('xhr.readyState',xhr.readyState)
         console.log('xhr.status', xhr.status)
@@ -79,7 +82,7 @@
         console.log(xhr);
         console.log('获取响应头', xhr.getAllResponseHeaders());
       }
-      xhr.send()
+      xhr.send(JSON.stringify({a:1}))
     }
   </script>
 </body>

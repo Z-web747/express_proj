@@ -11,5 +11,24 @@ router.post('/login', (req, res) => {
   })
 })
 
+router.get('/userinfo', (req, res) => {
+  const query = req.query
+  res.send({
+    code: '0000',
+    msg: 'success',
+    data: {
+      query
+    }
+  })
+})
+
+router.post('/userinfo', (req, res) => {
+  const body = req.body
+  res.send({
+    code: '0000',
+    data: body
+  })
+})
+
 
 module.exports = router
